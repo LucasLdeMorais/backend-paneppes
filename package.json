@@ -1,0 +1,21 @@
+{
+  "name": "backend-lucas-lopes-tcc",
+  "version": "0.0.1",
+  "description": "backend referente a aplicação painel emendas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Lucas Lopes de Morais",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.3.3"
+  }
+}
