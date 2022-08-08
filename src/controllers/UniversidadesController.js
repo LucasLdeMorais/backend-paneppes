@@ -4,13 +4,11 @@ module.exports = {
     
     async universidades(request, response) {
         try {
-            const {queryParams} = request.query;
-            console.log(queryParams)
-            const listUniversidades = await Universidades.find(queryParams);
-            if( listUniversidades === [] ) {
+            const universidades = await Universidades.find();
+            if( universidades === [] ) {
                 return response.status(404).json({mensagem: "nenhum resultado encontrado"});
             }
-            return response.status(200).json(listUniversidades);
+            return response.status(200).json(universidades);
         } catch(error) {
             response.status(500).json({error: error})
         }
@@ -19,11 +17,11 @@ module.exports = {
     async universidadesPorNome(request, response) {
         try {
             const { nome } = request.query;
-            const Universidade = await Universidades.findOne({ nome: nome });
-            if( Universidade === null ) {
+            const universidade = await Universidades.find({ nome: { $regex: '^' + nome, $options: 'i' } });
+            if( universidade === null ) {
                 return response.status(404).json({mensagem: "Universidade não encontrada"});
             }
-            return response.status(200).json(Universidade);
+            return response.status(200).json(universidade);
         } catch(error) {
             response.status(500).json({error: error})
         }
@@ -32,11 +30,12 @@ module.exports = {
     async universidadesPorSigla(request, response) {
         try {
             const { sigla } = request.query;
-            const Universidade = await Universidades.findOne({ sigla: sigla });
-            if( Universidade === null ) {
+            const universidade = await Universidades.find({ sigla: { $regex: '^' + sigla.toUpperCase(), $options: 'i' } });
+            console.log(regexp)
+            if( universidade === null ) {
                 return response.status(404).json({mensagem: "Universidade não encontrada"});
             }
-            return response.status(200).json(Universidade);
+            return response.status(200).json(universidade);
         } catch(error) {
             response.status(500).json({error: error})
         }

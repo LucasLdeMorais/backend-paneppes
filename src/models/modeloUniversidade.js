@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const UniversidadeSchema = new mongoose.Schema({
     nome: String,
-    numeroUo: Number
+    uo: Number,
+    sigla: String
 });
 
 module.exports = mongoose.model('Universidades', UniversidadeSchema, 'Universidades')
