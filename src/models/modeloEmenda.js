@@ -10,6 +10,7 @@ const EmendasSchema = new mongoose.Schema({
     nro: Number,
     orgao: String,
     uo: String,
+    nroUo: Number,
     acao: String,
     localizador: String,
     gnd: String,

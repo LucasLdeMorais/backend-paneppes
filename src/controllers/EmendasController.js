@@ -4,7 +4,6 @@ module.exports = {
     
     async emendas(request, response) {
         const listEmendas = await Emendas.find();
-        console.log(listEmendas)
         return response.json(listEmendas);
     },
 
@@ -29,7 +28,7 @@ module.exports = {
     async emendasPorUnidadeOrcamentaria(request, response) {
         try {
             const { uo } = request.query;
-            const listEmendas = await Emendas.find({ uo: {$regex: `${uo}`} });
+            const listEmendas = await Emendas.find({ 'nroUo': uo });
             return response.status(200).json({
                 total: listEmendas.length,
                 emendas: listEmendas
@@ -38,5 +37,4 @@ module.exports = {
             response.status(500).json({error: error})
         }
     },
-
 }
