@@ -25,6 +25,19 @@ module.exports = {
         return response.json(listEmendas);
     },
 
+    async emendasPorAutor(request, response) {
+        try {
+            const { autor } = request.query;
+            const listEmendas = await Emendas.find({ 'autor': autor });
+            return response.status(200).json({
+                total: listEmendas.length,
+                emendas: listEmendas
+            });
+        } catch (error) {
+            response.status(500).json({error: error})
+        }
+    },
+
     async emendasPorUnidadeOrcamentaria(request, response) {
         try {
             const { uo } = request.query;

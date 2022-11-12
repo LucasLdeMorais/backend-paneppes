@@ -7,6 +7,7 @@ const ParlamentaresController = require('./controllers/ParlamentaresController')
 
 routes.get('/emendas/uo', EmendasController.emendasPorUnidadeOrcamentaria);
 routes.get('/emendas/ano', EmendasController.emendasPorAno);
+routes.get('/emendas/autor', EmendasController.emendasPorAutor);
 routes.get('/emendas', EmendasController.emendas);
 routes.get('/universidades', UniversidadesController.universidades);
 routes.get('/universidades/nome', UniversidadesController.universidadesPorNome);
