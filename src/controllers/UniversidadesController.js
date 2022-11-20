@@ -6,7 +6,7 @@ module.exports = {
         try {
             const universidades = await Universidades.find();
             if( universidades === [] ) {
-                return response.status(404).json({mensagem: "nenhum resultado encontrado"});
+                return response.status(404).json({mensagem: "Nenhum resultado encontrado"});
             }
             return response.status(200).json(universidades);
         } catch(error) {

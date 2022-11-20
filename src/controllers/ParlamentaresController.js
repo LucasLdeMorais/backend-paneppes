@@ -6,7 +6,7 @@ module.exports = {
         try {
             const parlamentares = await Parlamentares.find();
             if( parlamentares === [] ) {
-                return response.status(404).json({mensagem: "nenhum resultado encontrado"});
+                return response.status(404).json({mensagem: "Nenhum resultado encontrado"});
             }
             return response.status(200).json(parlamentares);
         } catch(error) {
