@@ -1,21 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
-// require('./config/dbConfig');
+// require('./src/config/dbConfig');
 
-const routes = require('./routes');
+const routes = require('./src/routes');
 const app = express();
 const cors = require('cors');
-
-
-
-app.use(cors);
-app.use(express.json());
-app.use(routes);
 
 app.get('/', (request, response) => {
     response.status(200).json({message: 'Olá'})
 })
+
+app.use(cors);
+app.use(express.json());
+app.use(routes);
 
 const DB_USER = process.env.DB_USER
 const DB_PASS = encodeURIComponent(process.env.DB_PASS)
