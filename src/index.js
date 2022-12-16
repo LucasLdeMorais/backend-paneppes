@@ -1,14 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config()
+require('dotenv').config();
+// require('./config/dbConfig');
 
 const routes = require('./routes');
 const app = express();
 const cors = require('cors');
 
-// require('./config/dbConfig')
 
-// app.use(cors);
+
+app.use(cors);
 app.use(express.json());
 app.use(routes);
 
@@ -16,8 +17,8 @@ app.get('/', (request, response) => {
     response.status(200).json({message: 'Olá'})
 })
 
-const DB_USER = 'lucasLopes121'
-const DB_PASS = 'lordAnagrom71'
+const DB_USER = process.env.DB_USER
+const DB_PASS = encodeURIComponent(process.env.DB_PASS)
 const dbConfig = `mongodb+srv://${DB_USER}:${DB_PASS}@clusterlucaslopes.w2t96.mongodb.net/Emendas?retryWrites=true&w=majority`
 
 mongoose
