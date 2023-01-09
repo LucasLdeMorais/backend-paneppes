@@ -4,7 +4,7 @@ module.exports = {
     
     async universidades(request, response) {
         try {
-            const universidades = await Universidades.find();
+            const universidades = await Universidades.find().lean();
             if( universidades === [] ) {
                 return response.status(404).json({mensagem: "Nenhum resultado encontrado"});
             }
@@ -17,7 +17,7 @@ module.exports = {
     async universidadesPorNome(request, response) {
         try {
             const { nome } = request.query;
-            const universidade = await Universidades.find({ nome: { $regex: '^' + nome, $options: 'i' } });
+            const universidade = await Universidades.find({ nome: { $regex: '^' + nome, $options: 'i' } }).lean();
             if( universidade === null ) {
                 return response.status(404).json({mensagem: "Universidade não encontrada"});
             }
@@ -30,7 +30,7 @@ module.exports = {
     async universidadesPorSigla(request, response) {
         try {
             const { sigla } = request.query;
-            const universidade = await Universidades.find({ sigla: { $regex: '^' + sigla.toUpperCase(), $options: 'i' } });
+            const universidade = await Universidades.find({ sigla: { $regex: '^' + sigla.toUpperCase(), $options: 'i' } }).lean();
             console.log(regexp)
             if( universidade === null ) {
                 return response.status(404).json({mensagem: "Universidade não encontrada"});
@@ -45,7 +45,7 @@ module.exports = {
         try {
             const { uo } = request.query;
             console.log(uo)
-            const Universidade = await Universidades.findOne({ uo: uo });
+            const Universidade = await Universidades.findOne({ uo: uo }).lean();
             if( Universidade === null ) {
                 return response.status(404).json({mensagem: "Universidade não encontrada"});
             }

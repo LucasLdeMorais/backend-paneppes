@@ -8,14 +8,14 @@ module.exports = {
             const limite = request.query.limite;
             let listEmendas = [];
             if((limite === undefined || limite === null)) {
-                listEmendas = await Emendas.find();
+                listEmendas = await Emendas.find().lean();
                 return response.status(200).json(listEmendas);
             }
             
             if (`${pagina}` === `0` || `${limite}` === `0`) {
                 return response.status(400).json({error: "Parâmetro inválido"});
             }
-            listEmendas = await Emendas.find();
+            listEmendas = await Emendas.find().lean();
             const indiceInicial = (pagina === undefined || pagina === null || `${pagina}` === `0`)? ((1 - 1) * limite) : ((parseInt(`${pagina}`)  - 1) * parseInt(`${limite}`));
             const indiceFinal = parseInt(`${pagina}`) * parseInt(`${limite}`);
             const total = Math.round(listEmendas.length / parseInt(`${limite}`));
@@ -33,7 +33,7 @@ module.exports = {
     async emendasPorAno(request, response) {
         try {
             const { ano } = request.query;
-            const listEmendas = await Emendas.find({ 'ano': ano });
+            const listEmendas = await Emendas.find({ 'ano': ano }).lean();
             if (listEmendas.lenght === 0) {
                 return response.status(404).json({mensagem: "Não constam emendas para este ano"});
             }
@@ -46,7 +46,7 @@ module.exports = {
     async emendasPorUf(request, response) {
         try {
             const { uf } = request.params;
-            const listEmendas = await Emendas.find({ 'uf': uf });
+            const listEmendas = await Emendas.find({ 'uf': uf }).lean();
             if (listEmendas.lenght === 0) {
                 return response.status(404).json({mensagem: "Não constam emendas para este Estado"});
             }
@@ -59,7 +59,7 @@ module.exports = {
     async emendasPorAno(request, response) {
         try {
             const { ano } = request.params;
-            const listEmendas = await Emendas.find({ 'ano': ano });
+            const listEmendas = await Emendas.find({ 'ano': ano }).lean();
             if (listEmendas.lenght === 0) {
                 return response.status(404).json({mensagem: "Não constam emendas para este ano"});
             }
@@ -72,7 +72,7 @@ module.exports = {
     async emendasPorAutor(request, response) {
         try {
             const { autor } = request.query;
-            const listEmendas = await Emendas.find({ 'autor': autor });
+            const listEmendas = await Emendas.find({ 'autor': autor }).lean();
             if (listEmendas.lenght === 0) {
                 return response.status(404).json({mensagem: "Não constam emendas para este parlamentar"});
             }
@@ -88,7 +88,7 @@ module.exports = {
     async emendasPorUnidadeOrcamentaria(request, response) {
         try {
             const { uo } = request.query;
-            const listEmendas = await Emendas.find({ 'nroUo': uo });
+            const listEmendas = await Emendas.find({ 'nroUo': uo }).lean();
             if (listEmendas.lenght === 0) {
                 return response.status(404).json({mensagem: "Não constam emendas para esta unidade orçamentária"});
             }

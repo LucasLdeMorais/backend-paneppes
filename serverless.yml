@@ -1,0 +1,45 @@
+service: serverless-lucas-lopes-tcc
+provider:
+  name: aws
+  runtime: nodejs16.x
+  memorySize: 512
+  timeout: 120
+  region: sa-east-1
+  stage: dev
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+    - httpApi:
+      method: GET
+      path: /emendas
+      cors: true
+    - httpApi:
+      method: GET
+      path: /emendas/uo
+      cors: true
+    - httpApi:
+      method: GET
+      path: /emendas/autor
+      cors: true
+    - httpApi:
+      method: GET
+      path: /universidades
+      cors: true
+    - httpApi:
+      method: GET
+      path: /universidades/nome
+      cors: true
+    - httpApi:
+      method: GET
+      path: /universidades/sigla
+      cors: true
+    - httpApi:
+      method: GET
+      path: /universidades/uo
+      cors: true
+    - httpApi:
+      method: GET
+      path: /parlamentares
+      cors: true
