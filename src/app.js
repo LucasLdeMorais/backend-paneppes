@@ -15,8 +15,8 @@ app.get('/', (request, response) => {
 app.use(express.json());
 app.use(routes);
 
-const DB_USER = "lucasLopes121";
-const DB_PASS = "lordAnagrom71";
+const DB_USER = "visepifes";
+const DB_PASS = "4NhNsrFQyYFhpmR";
 const dbConfig = `mongodb+srv://${DB_USER}:${DB_PASS}@clusterlucaslopes.w2t96.mongodb.net/Emendas?retryWrites=true&w=majority`
 
 mongoose
