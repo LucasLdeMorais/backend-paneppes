@@ -9,7 +9,9 @@ app.get('/', (request, response) => {
     response.status(200).json({message: 'Olá'});
 })
 app.use(routes);
-app.use(cors);
+app.use(
+    cors({origin: ['https://6xih7zuq2l.execute-api.sa-east-1.amazonaws.com/dev/']})
+);
 app.use(express.json());
 
 module.exports = app;
