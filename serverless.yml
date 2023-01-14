@@ -1,4 +1,8 @@
 service: serverless-lucas-lopes-tcc
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
 provider:
   name: aws
   runtime: nodejs16.x
@@ -8,38 +12,70 @@ provider:
   stage: dev
 
 functions:
-  api:
+  app:
     handler: lambda.handler
     events:
-    - httpApi:
-      method: GET
-      path: /emendas
-      cors: true
-    - httpApi:
-      method: GET
-      path: /emendas/uo
-      cors: true
-    - httpApi:
-      method: GET
-      path: /emendas/autor
-      cors: true
-    - httpApi:
-      method: GET
-      path: /universidades
-      cors: true
-    - httpApi:
-      method: GET
-      path: /universidades/nome
-      cors: true
-    - httpApi:
-      method: GET
-      path: /universidades/sigla
-      cors: true
-    - httpApi:
-      method: GET
-      path: /universidades/uo
-      cors: true
-    - httpApi:
-      method: GET
-      path: /parlamentares
-      cors: true
+      - http:
+        method: ANY
+        cors: true
+        path: /
+      - http:
+        method: ANY {proxy+}
+        cors: true
+        path: /
+  emendas:
+    handler: lambda.handler
+    events:
+      - http:
+        method: GET
+        path: /emendas
+        cors: true
+  emendasUo:
+    handler: lambda.handler
+    events:
+      - http:
+        method: GET
+        path: /emendas/uo
+        cors: true
+  emendasAutor:
+    handler: lambda.handler
+    events:
+      - http:
+        method: GET
+        path: /emendas/autor
+        cors: true
+  universidades:
+    handler: lambda.handler
+    events:
+      - http:
+        method: GET
+        path: /universidades
+        cors: true
+  universidadesNome:
+    handler: lambda.handler
+    events:
+      - http:
+        method: GET
+        path: /universidades/nome
+        cors: true
+  universidadesSigla:
+    handler: lambda.handler
+    events:
+      - http:
+        method: GET
+        path: /universidades/sigla
+        cors: true
+  universidadesUo:
+    handler: lambda.handler
+    events:
+      - http:
+        method: GET
+        path: /universidades/uo
+        cors: true
+  parlamentares:
+    handler: lambda.handler
+    events:
+      - http:
+        method: GET
+        path: /parlamentares
+        cors: true
