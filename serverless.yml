@@ -2,7 +2,7 @@ service: serverless-lucas-lopes-tcc
 
 plugins:
   - serverless-dotenv-plugin
-  - serverless-offline
+  - serverless-plugin-common-excludes
 provider:
   name: aws
   runtime: nodejs16.x
@@ -17,10 +17,6 @@ functions:
     events:
       - http:
           method: ANY
-          cors: true
-          path: /
-      - http:
-          method: ANY {proxy+}
           cors: true
           path: /
   emendas:

@@ -9,10 +9,7 @@ const connect = async () => {
   try {
     connection = await mongoose.createConnection(dbConfig, {
       useNewUrlParser: true,
-      //useFindAndModify: false,
       useUnifiedTopology: true,
-      bufferCommands: false, // Disable mongoose buffering
-      bufferMaxEntries: 0, // and MongoDB driver buffering
     });
     return connection;
   } catch (e) {
