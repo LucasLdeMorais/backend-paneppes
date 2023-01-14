@@ -13,69 +13,69 @@ provider:
 
 functions:
   app:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: ANY
-        cors: true
-        path: /
+          method: ANY
+          cors: true
+          path: /
       - http:
-        method: ANY {proxy+}
-        cors: true
-        path: /
+          method: ANY {proxy+}
+          cors: true
+          path: /
   emendas:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: GET
-        path: /emendas
-        cors: true
+          method: GET
+          path: /emendas
+          cors: true
   emendasUo:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: GET
-        path: /emendas/uo
-        cors: true
+          method: GET
+          path: /emendas/uo
+          cors: true
   emendasAutor:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: GET
-        path: /emendas/autor
-        cors: true
+          method: GET
+          path: /emendas/autor
+          cors: true
   universidades:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: GET
-        path: /universidades
-        cors: true
+          method: GET
+          path: /universidades
+          cors: true
   universidadesNome:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: GET
-        path: /universidades/nome
-        cors: true
+          method: GET
+          path: /universidades/nome
+          cors: true
   universidadesSigla:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: GET
-        path: /universidades/sigla
-        cors: true
+          method: GET
+          path: /universidades/sigla
+          cors: true
   universidadesUo:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: GET
-        path: /universidades/uo
-        cors: true
+          method: GET
+          path: /universidades/uo
+          cors: true
   parlamentares:
-    handler: lambda.handler
+    handler: index.handler
     events:
       - http:
-        method: GET
-        path: /parlamentares
-        cors: true
+          method: GET
+          path: /parlamentares
+          cors: true

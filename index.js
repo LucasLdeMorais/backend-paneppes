@@ -8,7 +8,7 @@ module.exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   if (connection === null) connection = await connect();
-  const app = require("./app");
+  const app = require("./src/app");
   const server = awsServerlessExpress.createServer(app);
   return awsServerlessExpress.proxy(server, event, context, "PROMISE").promise;
 };
