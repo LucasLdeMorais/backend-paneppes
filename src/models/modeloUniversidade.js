@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { getConnection } = require("../../mongoose");
+const conn = getConnection();
 
 const UniversidadeSchema = new mongoose.Schema({
     nome: String,
@@ -6,4 +8,4 @@ const UniversidadeSchema = new mongoose.Schema({
     sigla: String
 });
 
-module.exports = mongoose.model('Universidades', UniversidadeSchema, 'Universidades')
+module.exports = conn.model('Universidades', UniversidadeSchema, 'Universidades')

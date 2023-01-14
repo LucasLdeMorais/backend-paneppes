@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/app.js",
-    "start": "./nodemodules/.bin/netlify-lambda serve src",
-    "build": "./nodemodules/.bin/netlify-lambda build src",
+    "start": "node src/app.js",
     "deploy": "serverless deploy"
   },
   "author": "Lucas Lopes de Morais",
@@ -18,7 +17,6 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "mongoose": "^6.4.1",
-    "netlify-lambda": "^2.0.15",
     "serverless": "^3.26.0",
     "serverless-dotenv-plugin": "^4.0.2",
     "serverless-http": "^3.1.1"

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { getConnection } = require("../../mongoose");
+const conn = getConnection();
 
 const EmendasSchema = new mongoose.Schema({
     ano: Number,
@@ -23,4 +25,4 @@ const EmendasSchema = new mongoose.Schema({
     valorPago: Number
 });
 
-module.exports = mongoose.model('Emendas', EmendasSchema, 'Emendas')
+module.exports = conn.model('Emendas', EmendasSchema, 'Emendas')
