@@ -1,6 +1,4 @@
 const express = require('express');
-const router = express.Router();
-const mongoose = require('mongoose');
 const serverless = require('serverless-http');
 
 const router = require('./routes');
