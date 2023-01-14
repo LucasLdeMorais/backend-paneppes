@@ -13,7 +13,6 @@ app.get('/', (request, response) => {
 
 app.use(cors);
 app.use(express.json());
-app.use(routes);
 app.use('/.netlify/functions/api', router);
 
 module.exports.handler = serverless(app);
