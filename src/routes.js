@@ -5,7 +5,7 @@ const EmendasController = require('./controllers/EmendasController');
 const UniversidadesController = require('./controllers/UniversidadesController');
 const ParlamentaresController = require('./controllers/ParlamentaresController')
 
-routes.get('/', (request, response) => {
+routes.get('/', (request, response, next) => {
     response.status(200).json({message: 'Olá'})
 })
 routes.get('/emendas/uo', EmendasController.emendasPorUnidadeOrcamentaria);

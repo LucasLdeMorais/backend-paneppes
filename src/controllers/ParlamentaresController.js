@@ -2,7 +2,7 @@ const Parlamentares = require('../models/modeloParlamentar.js');
 
 module.exports = {
     
-    async parlamentares(request, response) {
+    async parlamentares(request, response, next) {
         try {
             const parlamentares = await Parlamentares.find().lean();
             if( parlamentares === [] ) {
@@ -14,7 +14,7 @@ module.exports = {
         }
     },
 
-    async parlamentaresPorNome(request, response) {
+    async parlamentaresPorNome(request, response, next) {
         try {
             const { nome } = request.query;
             const parlamentar = await Parlamentares.find({ nome: { $regex: '^' + nome, $options: 'i' } }).lean();
@@ -27,7 +27,7 @@ module.exports = {
         }
     },
 
-    async parlamentaresPorPartido(request, response) {
+    async parlamentaresPorPartido(request, response, next) {
         try {
             const { sigla } = request.query;
             const parlamentar = await Parlamentares.find({ sigla: { $regex: '^' + sigla.toUpperCase(), $options: 'i' } }).lean();

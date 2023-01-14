@@ -2,7 +2,7 @@ const Universidades = require('../models/modeloUniversidade.js');
 
 module.exports = {
     
-    async universidades(request, response) {
+    async universidades(request, response, next) {
         try {
             const universidades = await Universidades.find().lean();
             if( universidades === [] ) {
@@ -14,7 +14,7 @@ module.exports = {
         }
     },
 
-    async universidadesPorNome(request, response) {
+    async universidadesPorNome(request, response, next) {
         try {
             const { nome } = request.query;
             const universidade = await Universidades.find({ nome: { $regex: '^' + nome, $options: 'i' } }).lean();
@@ -27,7 +27,7 @@ module.exports = {
         }
     },
 
-    async universidadesPorSigla(request, response) {
+    async universidadesPorSigla(request, response, next) {
         try {
             const { sigla } = request.query;
             const universidade = await Universidades.find({ sigla: { $regex: '^' + sigla.toUpperCase(), $options: 'i' } }).lean();
@@ -41,7 +41,7 @@ module.exports = {
         }
     },
 
-    async universidadePorNumeroUnidadeOrcamentaria(request, response) {
+    async universidadePorNumeroUnidadeOrcamentaria(request, response, next) {
         try {
             const { uo } = request.query;
             console.log(uo)

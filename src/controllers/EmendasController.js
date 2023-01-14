@@ -2,7 +2,7 @@ const Emendas = require('../models/modeloEmenda.js');
 
 module.exports = {
     
-    async emendas(request, response) {
+    async emendas(request, response, next) {
         try {
             const pagina = request.query.pagina;
             const limite = request.query.limite;
@@ -30,7 +30,7 @@ module.exports = {
         }
     },
 
-    async emendasPorAno(request, response) {
+    async emendasPorAno(request, response, next) {
         try {
             const { ano } = request.query;
             const listEmendas = await Emendas.find({ 'ano': ano }).lean();
@@ -43,7 +43,7 @@ module.exports = {
         }
     },
 
-    async emendasPorUf(request, response) {
+    async emendasPorUf(request, response, next) {
         try {
             const { uf } = request.params;
             const listEmendas = await Emendas.find({ 'uf': uf }).lean();
@@ -56,7 +56,7 @@ module.exports = {
         }
     },
 
-    async emendasPorAno(request, response) {
+    async emendasPorAno(request, response, next) {
         try {
             const { ano } = request.params;
             const listEmendas = await Emendas.find({ 'ano': ano }).lean();
@@ -69,7 +69,7 @@ module.exports = {
         }
     },
 
-    async emendasPorAutor(request, response) {
+    async emendasPorAutor(request, response, next) {
         try {
             const { autor } = request.query;
             const listEmendas = await Emendas.find({ 'autor': autor }).lean();
@@ -85,7 +85,7 @@ module.exports = {
         }
     },
 
-    async emendasPorUnidadeOrcamentaria(request, response) {
+    async emendasPorUnidadeOrcamentaria(request, response, next) {
         try {
             const { uo } = request.query;
             const listEmendas = await Emendas.find({ 'nroUo': uo }).lean();
