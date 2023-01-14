@@ -1,18 +1,18 @@
 const express = require('express');
-const routes = express.Router();
+const router = express.Router();
 
 const EmendasController = require('./controllers/EmendasController');    
 const UniversidadesController = require('./controllers/UniversidadesController');
 const ParlamentaresController = require('./controllers/ParlamentaresController')
 
-routes.get('/emendas/uo', EmendasController.emendasPorUnidadeOrcamentaria);
-routes.get('/emendas/ano', EmendasController.emendasPorAno);
-routes.get('/emendas/autor', EmendasController.emendasPorAutor);
-routes.get('/emendas', EmendasController.emendas);
-routes.get('/universidades', UniversidadesController.universidades);
-routes.get('/universidades/nome', UniversidadesController.universidadesPorNome);
-routes.get('/universidades/sigla', UniversidadesController.universidadesPorSigla);
-routes.get('/universidades/uo', UniversidadesController.universidadePorNumeroUnidadeOrcamentaria);
-routes.get('/parlamentares', ParlamentaresController.parlamentares);
+router.get('/emendas/uo', EmendasController.emendasPorUnidadeOrcamentaria);
+router.get('/emendas/ano', EmendasController.emendasPorAno);
+router.get('/emendas/autor', EmendasController.emendasPorAutor);
+router.get('/emendas', EmendasController.emendas);
+router.get('/universidades', UniversidadesController.universidades);
+router.get('/universidades/nome', UniversidadesController.universidadesPorNome);
+router.get('/universidades/sigla', UniversidadesController.universidadesPorSigla);
+router.get('/universidades/uo', UniversidadesController.universidadePorNumeroUnidadeOrcamentaria);
+router.get('/parlamentares', ParlamentaresController.parlamentares);
 
-module.exports = routes;
+module.exports = router;

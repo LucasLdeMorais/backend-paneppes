@@ -2,11 +2,12 @@
   "name": "backend-lucas-lopes-tcc",
   "version": "0.0.1",
   "description": "backend referente a aplicação painel emendas",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/app.js",
-    "start": "node src/app.js",
+    "start": "./nodemodules/.bin/netlify-lambda serve src",
+    "build": "./nodemodules/.bin/netlify-lambda build src",
     "deploy": "serverless deploy"
   },
   "author": "Lucas Lopes de Morais",
@@ -17,11 +18,13 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "mongoose": "^6.4.1",
-    "serverless-dotenv-plugin": "^4.0.2"
+    "netlify-lambda": "^2.0.15",
+    "serverless": "^3.26.0",
+    "serverless-dotenv-plugin": "^4.0.2",
+    "serverless-http": "^3.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.3.3",
-    "serverless": "^3.26.0",
     "serverless-offline": "^12.0.4"
   }
 }

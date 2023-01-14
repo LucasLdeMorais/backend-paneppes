@@ -2,3 +2,4 @@
 /package-lock.json
 /.serverless
 /.env
+/functions
